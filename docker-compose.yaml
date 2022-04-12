@@ -1,0 +1,15 @@
+version: "3.0"
+services:
+  app:
+    image: ghcr.io/djnotes/php-react-skeleton
+  
+    depends_on: 
+      - db
+  db:
+    image: docker.io/library/mariadb:10.7
+    environment:
+    # Create the following files and add credentials in them
+      - MARIADB_ALLOW_RANDOM_ROOT_PASSWORD=true
+      - MARIADB_DATABASE_FILE=env-mariadb-database
+      - MARIADB_USER_FILE=env-mariadb-user
+      - MARIADB_PASSWORD_FILE=env-mariadb-password

@@ -6,6 +6,8 @@ class DBConnection {
 
   public function __construct($db_config) {
 
+    # TODO: Get credentials from environment variables
+
     $this->mysqli = new mysqli(
       $db_config["host"],
       $db_config["user"],
@@ -14,7 +16,7 @@ class DBConnection {
     );
 
     if ($this->mysqli->connect_errno) {
-      echo "Error connecting to the database" . $db_name . "\n";
+      echo "Error connecting to the database" . $db_config["name"] . "\n";
       echo "Errno: " . $this->mysqli->connect_errno . "\n";
       echo "Error: " . $this->mysqli->connect_error . "\n";
       exit;
